@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Slime experiments</title>
+    <base href="/" />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An experimental playground for a slime engine."
+    />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+
+      .all {
+        background-color: black;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      canvas {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+
+    <script src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script>
+    <script src="dist/main.js" type="module"></script>
+  </head>
+
+  <body>
+    <div class="all">
+      <canvas></canvas>
+    </div>
+  </body>
+</html>

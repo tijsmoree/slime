@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es2015",
+    "lib": ["es2017", "dom"],
+    "module": "commonjs",
+    "rootDir": "src"
+  }
+}
