@@ -1,5 +1,3 @@
-#include <SDL2/SDL.h>
-
 #include "cell.h"
 
 #ifndef WORLD_H

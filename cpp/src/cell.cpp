@@ -2,10 +2,10 @@
 
 #include <math.h>
 
-#include <iostream>
-
 #include "settings.h"
 #include "utility.h"
+
+#define TWO_PI 6.28318530718f
 
 Cell::Cell() {
     float r = SPAWNRADIUS * sqrt(rnd());
@@ -25,17 +25,17 @@ void Cell::advance(float** field) {
     int xR = x + cos(a + SIGHTANGLE) * SIGHT;
     int yR = y + sin(a + SIGHTANGLE) * SIGHT;
 
-    if (xF >= 0 && yF >= 0 && xF < WIDTH && yF < HEIGHT && xL >= 0 && yL >= 0 &&
-        xL < WIDTH && yL < HEIGHT && xR >= 0 && yR >= 0 && xR < WIDTH &&
-        yR < HEIGHT) {
+    if ((xF >= 0 && yF >= 0 && xF < WIDTH && yF < HEIGHT) &&
+        (xL >= 0 && yL >= 0 && xL < WIDTH && yL < HEIGHT) &&
+        (xR >= 0 && yR >= 0 && xR < WIDTH && yR < HEIGHT)) {
         float valF = field[xF][yF];
         float valL = field[xL][yL];
         float valR = field[xR][yR];
 
         if (valF < valL && valF > valR) {
-            a -= rnd() * STEERSWING;
+            a -= STEERSWING;
         } else if (valF < valR && valF > valL) {
-            a += rnd() * STEERSWING;
+            a += STEERSWING;
         }
     }
 

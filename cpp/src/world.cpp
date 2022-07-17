@@ -1,8 +1,5 @@
 #include "world.h"
 
-#include <iostream>
-#include <vector>
-
 #include "cell.h"
 #include "settings.h"
 
@@ -48,6 +45,7 @@ void World::advance() {
 }
 
 void World::draw(unsigned char *pixels) {
+#pragma omp parallel for
     for (int i = 0; i < N; i++) {
         int x = cells[i]->x + 0.5f;
         int y = cells[i]->y + 0.5f;
@@ -57,6 +55,7 @@ void World::draw(unsigned char *pixels) {
         }
     }
 
+#pragma omp parallel for
     for (int i = 0; i < WIDTH; i++) {
         for (int j = 0; j < HEIGHT; j++) {
             copyField[i][j] = field[i][j];
@@ -76,12 +75,14 @@ void World::draw(unsigned char *pixels) {
         }
     }
 
+#pragma omp parallel for
     for (int i = 0; i < WIDTH; i++) {
         for (int j = 0; j < HEIGHT; j++) {
             field[i][j] = 0.11f * ALPHA * copyField[i][j];
         }
     }
 
+#pragma omp parallel for
     for (int i = 0; i < WIDTH; i++) {
         for (int j = 0; j < HEIGHT; j++) {
             pixels[(WIDTH * i + j) * 4 + 1] = field[i][j];

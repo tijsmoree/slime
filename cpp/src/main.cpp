@@ -1,11 +1,5 @@
 #include <SDL2/SDL.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
-#include <unistd.h>
-
-#include <iostream>
-#include <vector>
 
 #include "settings.h"
 #include "world.h"
@@ -13,7 +7,7 @@
 int main(int, char **) {
     World *world = new World();
 
-    srand(time(NULL));
+    srand(time(nullptr));
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         return 1;
